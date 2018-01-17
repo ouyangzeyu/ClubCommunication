@@ -6,11 +6,11 @@ var mongoose = require('mongoose');
 var articleScheme = mongoose.Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     content: {
         type: String,
-        require: true
+        required: true
     },
     articleType: {
         type: String,

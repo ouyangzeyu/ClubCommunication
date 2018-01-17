@@ -16,8 +16,6 @@ controller.showArticleAdd = function (req, res) {
 //2 添加文章
 controller.doArticleAdd = function (req, res) {
     var body = req.body;
-    console.log(body);
-
     articleModel.create(body, function (err, doc) {
         if (err) {
             res.json(errHandler(500, err));

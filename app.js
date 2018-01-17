@@ -57,5 +57,5 @@ app.get('/', function (req, res) {
 
 //7.监听端口号
 app.listen(3000, function () {
-    console.log('欢迎来到黑马14期吹水俱乐部');
+    console.log('欢迎来到XX俱乐部');
 })
