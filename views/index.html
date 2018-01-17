@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>黑马前端社区</title>
+	<!-- 导入jquery -->
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<!-- 导入bootstrap -->
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- 模板引擎 -->
+	<script src="/node_modules/art-template/lib/template-web.js"></script>
+</head>
+
+<style type="text/css">
+	.navbar-header .nav_logo {
+		margin-top: -12px
+	}
+
+	.container {
+		background-color: #fff
+	}
+
+	.navbar-left {
+		margin-right: 10px
+	}
+
+	.nav .nav-pills {
+		padding-top: 5px
+	}
+
+	.media-object {
+		width: 50px
+	}
+
+	.count_set {
+		margin-top: 10px
+	}
+</style>
+
+<body>
+	
+	
+	{{include './a.html'}}
+	<!-- 文章列表区域 -->
+	<div class="container-wrap">
+		<div class="container">
+			<ul class="list-group"></ul>
+			{{ each articles }}
+			<li class="list-group-item ">
+				<div class="media">
+					<div class="media-left media-middle">
+						<a href="#">
+							<img class="media-object img-circle" src="public/img/default_icon.png" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						<a href="/article/info?id={{$value.id}}">
+							<h4 class="media-heading" style="color: #15F44B">{{ $value.title }}</h4>
+						</a>
+						<h5 class="media-heading">{{ $value.content }}</h5>
+
+					</div>
+				</div>
+			</li>
+			{{ /each articles }}
+			</ul>
+
+
+		</div>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	//封装搜索请求
+	function search(e) {
+		e.preventDefault();
+		var searchStr = $('#searchInput').val();
+		var href = '/search?searchStr=' + searchStr;
+		window.location.href = href;
+	}
+
+	//搜索按钮点击事件
+	$('#search').on('click', function (e) {
+		search(e);
+	});
+
+	//搜索框输入事件
+	$('#searchInput').bind('keypress', function (event) {
+		//enter键
+		if (event.keyCode == "13") {
+			search(event);
+		}
+	});
+</script>
+
+</html>
